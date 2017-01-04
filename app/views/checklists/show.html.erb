@@ -20,5 +20,12 @@
   <%= @checklist.note %>
 </p>
 
+
+<%= @butterflies.map{|i| i.species} %>
+<%= @checklist.butterflies.map{|i| i.species} %>
+
+<%= link_to 'New Butterfly', new_checklist_butterfly_path(params[:id]) %>
+
+
 <%= link_to 'Edit', edit_checklist_path(@checklist) %> |
 <%= link_to 'Back', checklists_path %>

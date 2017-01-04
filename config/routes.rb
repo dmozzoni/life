@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "checklists#index"
   resources :checklists do
     resources :butterflies
   end

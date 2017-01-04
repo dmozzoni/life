@@ -10,6 +10,8 @@ class ChecklistsController < ApplicationController
   # GET /checklists/1
   # GET /checklists/1.json
   def show
+
+    @butterflies = Butterfly.where(checklist_id: params[:id])
   end
 
   # GET /checklists/new
