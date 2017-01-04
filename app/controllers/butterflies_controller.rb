@@ -22,7 +22,8 @@ class ButterfliesController < ApplicationController
 
   # POST checklists/1/butterflies
   def create
-    @butterfly = @checklist.butterflies.build(butterfly_params)
+
+    @butterfly = @checklist.butterflies.build(butterfly_params.merge(user: current_user))
 
     if @butterfly.save
       redirect_to([@butterfly.checklist, @butterfly], notice: 'Butterfly was successfully created.')
@@ -30,6 +31,7 @@ class ButterfliesController < ApplicationController
       render action: 'new'
     end
   end
+
 
   # PUT checklists/1/butterflies/1
   def update
@@ -46,6 +48,23 @@ class ButterfliesController < ApplicationController
 
     redirect_to checklist_butterflies_url(@checklist)
   end
+
+
+  def destroy
+    @butterfly = Butterfly.find(params[:id])
+    if @butterfly.user == current_user
+      @butterfly.destroy
+    else
+      flash[:alert] = "Only the author of the Butterfly Observation can delete"
+    end
+    redirect_to checklist_butterflies_url(@checklist)
+  end
+
+
+
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -26,7 +26,9 @@ class ChecklistsController < ApplicationController
   # POST /checklists
   # POST /checklists.json
   def create
-    @checklist = Checklist.new(checklist_params)
+    # @checklist = Checklist.new(checklist_params)
+    @checklist = Checklist.create!(checklist_params.merge(user: current_user))
+    # redirect_to checklist_path(@checklist)
 
     respond_to do |format|
       if @checklist.save
@@ -55,12 +57,23 @@ class ChecklistsController < ApplicationController
 
   # DELETE /checklists/1
   # DELETE /checklists/1.json
+  # def destroy
+  #   @checklist.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to checklists_url, notice: 'Checklist was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
+  # app/controllers/posts_controller
+
   def destroy
-    @checklist.destroy
-    respond_to do |format|
-      format.html { redirect_to checklists_url, notice: 'Checklist was successfully destroyed.' }
-      format.json { head :no_content }
+    @checklist = Checklist.find(params[:id])
+    if @checklist.user == current_user
+      @checklist.destroy
+    else
+      flash[:alert] = "Only the author of the post can delete"
     end
+    redirect_to checklists_path
   end
 
   private
