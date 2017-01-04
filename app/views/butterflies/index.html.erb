@@ -1,0 +1,29 @@
+<h1>Listing butterflies</h1>
+
+<table>
+  <tr>
+    <th>Species</th>
+    <th>Num</th>
+    <th>Img url</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @butterflies.each do |butterfly| %>
+  <tr>
+    <td><%= butterfly.species %></td>
+    <td><%= butterfly.num %></td>
+    <td><%= butterfly.img_url %></td>
+    <td><%= butterfly.note %></td>
+    <td><%= link_to 'Show', [butterfly.checklist, butterfly] %></td>
+    <td><%= link_to 'Edit', edit_checklist_butterfly_path(butterfly.checklist, butterfly) %></td>
+    <td><%= link_to 'Destroy', [butterfly.checklist, butterfly], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Butterfly', new_checklist_butterfly_path(params[:checklist_id]) %>
