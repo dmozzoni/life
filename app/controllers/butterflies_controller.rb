@@ -23,31 +23,71 @@ class ButterfliesController < ApplicationController
   # POST checklists/1/butterflies
   def create
 
-    @butterfly = @checklist.butterflies.build(butterfly_params.merge(user: current_user))
 
-    if @butterfly.save
-      redirect_to([@butterfly.checklist, @butterfly], notice: 'Butterfly was successfully created.')
+    if @checklist.user == current_user
+
+      @butterfly = @checklist.butterflies.build(butterfly_params.merge(user: current_user))
+
+      if @butterfly.save
+        redirect_to([@butterfly.checklist, @butterfly], notice: 'Butterfly was successfully created.')
+      else
+        render action: 'new'
+      end
+      
     else
-      render action: 'new'
+      flash[:alert] = "Only the author of the Checklist can add Butterfly"
+      redirect_to checklist_butterflies_path
     end
+
+
+
+
+
+
+
+
   end
 
 
   # PUT checklists/1/butterflies/1
+  # def update
+  #   if @butterfly.update_attributes(butterfly_params)
+  #     redirect_to([@butterfly.checklist, @butterfly], notice: 'Butterfly was successfully updated.')
+  #   else
+  #     render action: 'edit'
+  #   end
+  # end
+
+
   def update
-    if @butterfly.update_attributes(butterfly_params)
-      redirect_to([@butterfly.checklist, @butterfly], notice: 'Butterfly was successfully updated.')
+
+    # @checklist = Checklist.find(params[:id])
+    if @butterfly.user == current_user
+
+      if @butterfly.update_attributes(butterfly_params)
+        redirect_to([@butterfly.checklist, @butterfly], notice: 'Butterfly was successfully updated.')
+      else
+        render action: 'edit'
+      end
+
     else
-      render action: 'edit'
+      flash[:alert] = "Only the author of the Butterfly can Update"
+      redirect_to checklist_butterflies_path
     end
+
   end
+
+
+
+
+
 
   # DELETE checklists/1/butterflies/1
-  def destroy
-    @butterfly.destroy
-
-    redirect_to checklist_butterflies_url(@checklist)
-  end
+  # def destroy
+  #   @butterfly.destroy
+  #
+  #   redirect_to checklist_butterflies_url(@checklist)
+  # end
 
 
   def destroy

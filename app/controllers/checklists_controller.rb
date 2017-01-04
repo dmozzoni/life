@@ -44,15 +44,24 @@ class ChecklistsController < ApplicationController
   # PATCH/PUT /checklists/1
   # PATCH/PUT /checklists/1.json
   def update
-    respond_to do |format|
-      if @checklist.update(checklist_params)
-        format.html { redirect_to @checklist, notice: 'Checklist was successfully updated.' }
-        format.json { render :show, status: :ok, location: @checklist }
-      else
-        format.html { render :edit }
-        format.json { render json: @checklist.errors, status: :unprocessable_entity }
+
+    @checklist = Checklist.find(params[:id])
+    if @checklist.user == current_user
+      respond_to do |format|
+        if @checklist.update(checklist_params.merge(user: current_user))
+          format.html { redirect_to @checklist, notice: 'Checklist was successfully updated.' }
+          format.json { render :show, status: :ok, location: @checklist }
+        else
+          format.html { render :edit }
+          format.json { render json: @checklist.errors, status: :unprocessable_entity }
+          redirect_to checklists_path
+        end
       end
+    else
+      flash[:alert] = "Only the author of the Checklist can Update"
+      redirect_to checklists_path
     end
+
   end
 
   # DELETE /checklists/1
