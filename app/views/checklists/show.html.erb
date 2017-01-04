@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @checklist.date %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @checklist.location %>
+</p>
+
+<p>
+  <strong>Coord:</strong>
+  <%= @checklist.coord %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @checklist.note %>
+</p>
+
+<%= link_to 'Edit', edit_checklist_path(@checklist) %> |
+<%= link_to 'Back', checklists_path %>
