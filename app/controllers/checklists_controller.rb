@@ -93,6 +93,6 @@ class ChecklistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def checklist_params
-      params.require(:checklist).permit(:date, :location, :coord, :note)
+      params.require(:checklist).permit(:date, :location, :coord, :note, :country, :state, :county)
     end
 end

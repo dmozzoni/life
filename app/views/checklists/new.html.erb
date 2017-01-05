@@ -2,4 +2,23 @@
 
 <%= render 'form', checklist: @checklist %>
 
+<div id="map"></div>
+<div id="current">Nothing yet...</div>
+<div id="floating-panel">
+  <input id="latlng" type="text" value="40.714224,-73.961452">
+  <input id="submit" type="button" value="Reverse Geocode">
+</div>
+<br>
+<br>
+<br>
+<!-- Replace the value of the key parameter with your own API key. -->
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBwciru3IkmyfNlCCYP3Po0cVgCc-Oju0&callback=initMap">
+</script>
+
+<h1>Test</h1>
+
+
+
+
 <%= link_to 'Back', checklists_path %>

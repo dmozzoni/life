@@ -18,6 +18,20 @@
   <%= @checklist.note %>
 </p>
 
+<p>
+  <strong>Country:</strong>
+  <%= @checklist.country %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @checklist.state %>
+</p>
+
+<p>
+  <strong>County:</strong>
+  <%= @checklist.county %>
+</p>
 
 <%= @butterflies.map{|i| i.species} %>
 <%= @checklist.butterflies.map{|i| i.species} %>
