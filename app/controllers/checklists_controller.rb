@@ -4,7 +4,7 @@ class ChecklistsController < ApplicationController
   # GET /checklists
   # GET /checklists.json
   def index
-    @checklists = Checklist.all
+    @checklists = Checklist.all.where(user: current_user)
   end
 
   # GET /checklists/1
