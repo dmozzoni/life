@@ -12,8 +12,11 @@
 <br>
 <br>
 <!-- Replace the value of the key parameter with your own API key. -->
+
+<% srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=initMap" %>
+
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBwciru3IkmyfNlCCYP3Po0cVgCc-Oju0&callback=initMap">
+src=<%= srctext %>>
 </script>
 
 <h1>Test</h1>
