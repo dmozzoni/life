@@ -1,3 +1,6 @@
+let lat = 0.0;
+let lng = 0.0;
+
 function initMap() {
   var myLatLng = {lat: 41.724, lng: -71.623};
   var geocoder = new google.maps.Geocoder;
@@ -118,4 +121,24 @@ function geocodeLatLng(geocoder, map, infowindow) {
 }
 
 
+}
+
+function setLatLng(tmpLat, tmpLng) {
+  lat = tmpLat;
+  lng = tmpLng;
+}
+
+// For the Checklist Show Page
+function showMap() {
+  // function showMap(lat, lng) {
+   var uluru = {lat: lat, lng: lng};
+
+  var map = new google.maps.Map(document.getElementById('map2'), {
+    zoom:11,
+    center: uluru
+  });
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map
+  });
 }

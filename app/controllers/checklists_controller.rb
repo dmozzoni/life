@@ -10,8 +10,15 @@ class ChecklistsController < ApplicationController
   # GET /checklists/1
   # GET /checklists/1.json
   def show
+    # tmp = @checklist.coord.split(',').map{|i| i.to_f}
+    tmp = @checklist.coord.split(',')
+     @lat = tmp[0]
+     @lng = tmp[1]
+    #  @coord = {lat: tmp[0], lng: tmp[1]}
+    #  @srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=showMap("+ @lat +','+ @lng +")"
+     @srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=showMap"
 
-    @butterflies = Butterfly.where(checklist_id: params[:id])
+     @butterflies = Butterfly.where(checklist_id: params[:id])
   end
 
   # GET /checklists/new
