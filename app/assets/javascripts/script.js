@@ -21,10 +21,24 @@ function initMap() {
     geocodeLatLng(geocoder, map, infowindow);
   });
 
+  $('#dumbbutton').on('click', function(e) {
+
+    geocodeLatLng(geocoder, map, infowindow);
+
+  });
+  // $('#new_checklist').on('submit', function(e) {
+  //
+  //   geocodeLatLng(geocoder, map, infowindow);
+  //
+  // });
+
 
 // This event listener will call addMarker() when the map is clicked.
 map.addListener('click', function(event) {
-  addMarker(event.latLng);
+  // addMarker(event.latLng);
+
+  marker.setPosition(event.latLng);
+
 });
 
 // google.maps.event.addListener(marker, 'dragend', function (evt) {
@@ -37,11 +51,11 @@ map.addListener('click', function(event) {
 
 
 // Adds a marker to the map and push to the array.
-function addMarker(location) {
-  marker.setPosition(location);
-  // document.getElementById('current').innerHTML = '<p>Marker moved: Current Lat: ' + location + '</p>';
-  // document.getElementById('latlng').value = String(location).slice(1,-1);
-}
+// function addMarker(location) {
+//   marker.setPosition(location);
+//   // document.getElementById('current').innerHTML = '<p>Marker moved: Current Lat: ' + location + '</p>';
+//   // document.getElementById('latlng').value = String(location).slice(1,-1);
+// }
 
 function findName(results, level, type) {
   for (var key in results) {
@@ -58,21 +72,21 @@ function findName(results, level, type) {
 
 
 function geocodeLatLng(geocoder, map, infowindow) {
-  // var input = document.getElementById('latlng').value;
-  // var latlngStr = input.split(',', 2);
   var latlng = {lat: marker.position.lat(), lng: marker.position.lng()};
-
-debugger;
-
 
   geocoder.geocode({'location': latlng}, function(results, status) {
     if (status === 'OK') {
       if (results[1]) {
+        var tmp1 = findName(results, 'country', 'long_name');
+        var tmp2 = findName(results,'administrative_area_level_1','long_name');
+        var tmp3 = findName(results,'administrative_area_level_2','short_name');
 
         document.getElementById("checklist_country").value = findName(results, 'country', 'long_name');
         document.getElementById("checklist_state").value = findName(results,'administrative_area_level_1','long_name');
         document.getElementById("checklist_county").value = findName(results,'administrative_area_level_2','short_name');
-        document.getElementById("checklist_coord").value = input;
+        document.getElementById("checklist_coord").value = String(latlng.lat)+','+String(latlng.lng);
+
+        $('#new_checklist').submit();
 
       } else {
         window.alert('No results found');
@@ -80,7 +94,9 @@ debugger;
     } else {
       window.alert('Geocoder failed due to: ' + status);
     }
+
   });
+
 }
 
 
