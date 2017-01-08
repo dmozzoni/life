@@ -119,11 +119,6 @@ function showMap() {
 }
 
 
-
-
-
-
-
 function initMap2() {
   var myLatLng = {lat: lat, lng: lng};
   var geocoder = new google.maps.Geocoder;
