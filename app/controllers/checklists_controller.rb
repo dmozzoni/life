@@ -10,24 +10,22 @@ class ChecklistsController < ApplicationController
   # GET /checklists/1
   # GET /checklists/1.json
   def show
-    # tmp = @checklist.coord.split(',').map{|i| i.to_f}
-    tmp = @checklist.coord.split(',')
+     tmp = @checklist.coord.split(',')
      @lat = tmp[0]
      @lng = tmp[1]
-    #  @coord = {lat: tmp[0], lng: tmp[1]}
-    #  @srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=showMap("+ @lat +','+ @lng +")"
      @srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=showMap"
-
      @butterflies = Butterfly.where(checklist_id: params[:id])
   end
 
   # GET /checklists/new
   def new
+    @srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=initMap"
     @checklist = Checklist.new
   end
 
   # GET /checklists/1/edit
   def edit
+
   end
 
   # POST /checklists
@@ -65,7 +63,7 @@ class ChecklistsController < ApplicationController
         end
       end
     else
-      flash[:alert] = "Only the author of the Checklist can Update"
+      flash[:alert] = "Only the author of the Checklist may Update."
       redirect_to checklists_path
     end
 
@@ -87,7 +85,7 @@ class ChecklistsController < ApplicationController
     if @checklist.user == current_user
       @checklist.destroy
     else
-      flash[:alert] = "Only the author of the post can delete"
+      flash[:alert] = "Only the author of the post may delete this checklist."
     end
     redirect_to checklists_path
   end

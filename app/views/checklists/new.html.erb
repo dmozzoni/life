@@ -1,22 +1,22 @@
 <h1>New Checklist</h1>
 
-<%= render 'form', checklist: @checklist %>
+<div class='container'>
+    <div class='row'>
+        <div class='col s4'>
+            <%= render 'form', checklist: @checklist %>
+        </div>
 
-<div id="map"></div>
-<div id="current">Nothing yet...</div>
-<div id="floating-panel">
-  <input id="latlng" type="text" value="40.714224,-73.961452">
-  <input id="submit" type="button" value="Reverse Geocode">
+        <div class='col s8'>
+            <div id="map"></div>
+            <div id="current">Nothing yet...</div>
+            <div id="floating-panel">
+                <input id="latlng" type="text" value="40.714224,-73.961452">
+                <input id="submit" type="button" value="Reverse Geocode">
+            </div>
+        </div>
+    </div>
 </div>
-<br>
-<br>
-<br>
-<!-- Replace the value of the key parameter with your own API key. -->
 
-<% srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=initMap" %>
-
-<script async defer
-src=<%= srctext %>>
-</script>
+<script async defer src=<%= @srctext %>></script>
 
 <%= link_to 'Back', checklists_path %>

@@ -1,96 +1,81 @@
-
-
-
-
-
 <div class="col s12 m7">
-  <h2 class="header">Checklist <span class="spanEdit"><%= link_to 'Edit', edit_checklist_path(@checklist) %></span>
-</h2>
-  <div class="card horizontal">
-    <div class="card-image">
-      <div id="map2"></div>
+    <h2 class="header">Checklist
+        <span class="spanEdit"><%= link_to 'Edit', edit_checklist_path(@checklist) %></span>
+    </h2>
+    <div class="card horizontal">
+        <div class="card-image">
+            <div id="map2"></div>
+            <script>
+                setLatLng(<%= @lat %>, <%= @lng %>);
+            </script>
+            <script async defer src=<%= @srctext %>></script>
+        </div>
+        <div class="card-stacked">
+            <div class="card-content">
 
-<script>
- setLatLng(<%= @lat %>, <%= @lng %>);
-</script>
-      <script
-      async defer src=<%= @srctext %> >
-      </script>
+                <table class="highlight">
+                    <tbody>
+                        <tr>
+                            <th>Date</th>
+                            <td><%= @checklist.date %></td>
+                        </tr>
+                        <tr>
+                            <th>Location</th>
+                            <td><%= @checklist.location %></td>
+                        </tr>
+                        <tr>
+                            <th>Coord</th>
+                            <td><%= @checklist.coord %></td>
+                        </tr>
+                        <tr>
+                            <th>Country</th>
+                            <td><%= @checklist.country %></td>
+                        </tr>
+                        <tr>
+                            <th>State</th>
+                            <td><%= @checklist.state %></td>
+                        </tr>
+                        <tr>
+                            <th>County</th>
+                            <td><%= @checklist.county %></td>
+                        </tr>
+                        <tr>
+                            <th>Note</th>
+                            <td><%= @checklist.note %></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="card-action">
+                <%= link_to 'Add a New Butterfly to this Checklist', new_checklist_butterfly_path(params[:id]) %>
+            </div>
+        </div>
     </div>
-    <div class="card-stacked">
-      <div class="card-content">
-
-        <table class="highlight">
-                <tbody>
-                  <tr>
-                    <th>Date</th>
-                    <td><%= @checklist.date %></td>
-                  </tr>
-                  <tr>
-                    <th>Location</th>
-                    <td><%= @checklist.location %></td>
-                  </tr>
-                  <tr>
-                    <th>Coord</th>
-                    <td><%= @checklist.coord %></td>
-                  </tr>
-                  <tr>
-                    <th>Country</th>
-                    <td><%= @checklist.country %></td>
-                  </tr>
-                  <tr>
-                    <th>State</th>
-                    <td><%= @checklist.state %></td>
-                  </tr>
-                  <tr>
-                    <th>County</th>
-                    <td><%= @checklist.county %></td>
-                  </tr>
-                  <tr>
-                    <th>Note</th>
-                    <td><%= @checklist.note %></td>
-                  </tr>
-                </tbody>
-              </table>
-
-
-      </div>
-      <div class="card-action">
-        <%= link_to 'Add a New Butterfly to this Checklist', new_checklist_butterfly_path(params[:id]) %>
-      </div>
-    </div>
-  </div>
 </div>
 
-
-
-  <ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+<ul class="collapsible collection with-header" data-collapsible="accordion">
+    <li class="collection-header">
+        <h4>Butterflies included on this Checklist</h4>
     </li>
+    <% @checklist.butterflies.each do |item| %>
     <li>
-      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+        <div class="collapsible-header">
+            <%= item.species %>
+        </div>
+        <div class="collapsible-body">
+            <p>Count:
+                <%= item.num %></p>
+            <p>Note:
+                <%= item.note %></p>
+            <p><%= link_to 'Link to Record', checklist_butterfly_path(params[:id],item.id) %></p>
+        </div>
     </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-    </li>
-  </ul>
-
-
-
-
-<ul class="collapsible" data-collapsible="accordion">
-  <% @checklist.butterflies.each do |item| %>
-    <li>
-      <div class="collapsible-header"> <%= item.species %> </div>
-      <div class="collapsible-body">
-        <p>Count: <%= item.num %></p>
-        <p>Note: <%= item.note %></p>
-        <%= link_to 'Link to Record', checklist_butterfly_path(params[:id],item.id) %>
-      </div>
-    </li>
-  <% end %>
+    <% end %>
 </ul>
+
+<script>
+    $(document).ready(function () {
+        $('.collapsible').collapsible();
+    });
+</script>
