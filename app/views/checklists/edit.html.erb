@@ -1,6 +1,20 @@
 <h1>Editing Checklist</h1>
 
-<%= render 'form', checklist: @checklist %>
+<div class='container'>
+    <div class='row'>
+        <div class='col s4'>
+            <%= render 'form', checklist: @checklist %>
+        </div>
+
+        <div class='col s8'>
+            <div id="map3"></div>
+        </div>
+    </div>
+</div>
+<script>
+    setLatLng(<%= @lat %>, <%= @lng %>);
+</script>
+<script async defer src=<%= @srctext %>></script>
 
 
 <%= link_to 'Show', @checklist %> |

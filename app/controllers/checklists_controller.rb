@@ -19,12 +19,18 @@ class ChecklistsController < ApplicationController
 
   # GET /checklists/new
   def new
+    @lat = 41.724
+    @lng = -71.623
     @srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=initMap"
     @checklist = Checklist.new
   end
 
   # GET /checklists/1/edit
   def edit
+    tmp = @checklist.coord.split(',')
+    @lat = tmp[0]
+    @lng = tmp[1]
+    @srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=initMap2"
 
   end
 

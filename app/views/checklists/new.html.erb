@@ -8,15 +8,12 @@
 
         <div class='col s8'>
             <div id="map"></div>
-            <div id="current">Nothing yet...</div>
-            <div id="floating-panel">
-                <input id="latlng" type="text" value="40.714224,-73.961452">
-                <input id="submit" type="button" value="Reverse Geocode">
-            </div>
         </div>
     </div>
 </div>
-
+<script>
+    setLatLng(<%= @lat %>, <%= @lng %>);
+</script>
 <script async defer src=<%= @srctext %>></script>
 
 <%= link_to 'Back', checklists_path %>

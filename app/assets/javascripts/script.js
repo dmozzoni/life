@@ -1,8 +1,9 @@
 let lat = 0.0;
 let lng = 0.0;
 
+
 function initMap() {
-  var myLatLng = {lat: 41.724, lng: -71.623};
+  var myLatLng = {lat: lat, lng: lng};
   var geocoder = new google.maps.Geocoder;
   var infowindow = new google.maps.InfoWindow;
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -17,9 +18,9 @@ function initMap() {
     draggable: true
   });
 
-  document.getElementById('submit').addEventListener('click', function() {
-    geocodeLatLng(geocoder, map, infowindow);
-  });
+  // document.getElementById('submit').addEventListener('click', function() {
+  //   geocodeLatLng(geocoder, map, infowindow);
+  // });
 
   $('#dumbbutton').on('click', function(e) {
 
@@ -77,9 +78,6 @@ function geocodeLatLng(geocoder, map, infowindow) {
   geocoder.geocode({'location': latlng}, function(results, status) {
     if (status === 'OK') {
       if (results[1]) {
-        var tmp1 = findName(results, 'country', 'long_name');
-        var tmp2 = findName(results,'administrative_area_level_1','long_name');
-        var tmp3 = findName(results,'administrative_area_level_2','short_name');
 
         document.getElementById("checklist_country").value = findName(results, 'country', 'long_name');
         document.getElementById("checklist_state").value = findName(results,'administrative_area_level_1','long_name');
@@ -118,4 +116,76 @@ function showMap() {
     position: init,
     map: map
   });
+}
+
+
+
+
+
+
+
+function initMap2() {
+  var myLatLng = {lat: lat, lng: lng};
+  var geocoder = new google.maps.Geocoder;
+  var infowindow = new google.maps.InfoWindow;
+  var map = new google.maps.Map(document.getElementById('map3'), {
+    zoom: 11,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    draggable: true
+  });
+
+
+  $('#dumbbutton').on('click', function(e) {
+    geocodeLatLng(geocoder, map, infowindow);
+  });
+
+// This event listener will call addMarker() when the map is clicked.
+map.addListener('click', function(event) {
+  marker.setPosition(event.latLng);
+});
+
+function findName(results, level, type) {
+  for (var key in results) {
+    var add = results[key];
+    for (var key2 in add.address_components) {
+      var add2 = add.address_components[key2];
+      for (var key3 in add2.types) {
+        if ((add2.types[key3].localeCompare(level)) === 0)
+          return(add2[type]);
+      }
+    }
+  }
+}
+
+
+function geocodeLatLng(geocoder, map, infowindow) {
+  var latlng = {lat: marker.position.lat(), lng: marker.position.lng()};
+
+  geocoder.geocode({'location': latlng}, function(results, status) {
+    if (status === 'OK') {
+      if (results[1]) {
+        document.getElementById("checklist_country").value = findName(results, 'country', 'long_name');
+        document.getElementById("checklist_state").value = findName(results,'administrative_area_level_1','long_name');
+        document.getElementById("checklist_county").value = findName(results,'administrative_area_level_2','short_name');
+        document.getElementById("checklist_coord").value = String(latlng.lat)+','+String(latlng.lng);
+
+        $('form').submit();
+
+      } else {
+        window.alert('No results found');
+      }
+    } else {
+      window.alert('Geocoder failed due to: ' + status);
+    }
+
+  });
+
+}
+
+
 }
