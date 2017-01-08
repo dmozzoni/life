@@ -11,7 +11,7 @@
 
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-  
+
     <nav>
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">Butterfly Lifelist</a>
@@ -20,7 +20,7 @@
             <li> <%= link_to "Checklists", checklists_path %> </li>
             <li> <%= link_to "Stats", user_path(current_user) %> </li>
             <li> <%= link_to 'Edit profile', edit_user_registration_path %> </li>
-            <li> <%= link_to "Logout", destroy_user_session_path  %> </li>
+            <li> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
           <% else %>
             <li> <%= link_to "Sign up", new_user_registration_path %> </li>
             <li> <%= link_to "Login", new_user_session_path %> </li>
@@ -28,7 +28,6 @@
         </ul>
       </div>
     </nav>
-
 
 <p>
     <% if user_signed_in? %>
