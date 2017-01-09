@@ -84,7 +84,17 @@ function geocodeLatLng(geocoder, map, infowindow) {
         document.getElementById("checklist_county").value = findName(results,'administrative_area_level_2','short_name');
         document.getElementById("checklist_coord").value = String(latlng.lat)+','+String(latlng.lng);
 
-        $('#new_checklist').submit();
+
+        if (document.getElementById("checklist_location").value !== '' && document.getElementById("checklist_date").value !== '' ) {
+
+          $('#new_checklist').submit();
+        
+        }
+        else {
+          alert('Form incomplete')
+        }
+
+
 
       } else {
         window.alert('No results found');
@@ -169,7 +179,17 @@ function geocodeLatLng(geocoder, map, infowindow) {
         document.getElementById("checklist_county").value = findName(results,'administrative_area_level_2','short_name');
         document.getElementById("checklist_coord").value = String(latlng.lat)+','+String(latlng.lng);
 
-        $('form').submit();
+
+if (document.getElementById("checklist_location").value !== '' && document.getElementById("checklist_date").value !== '' ) {
+
+  $('form').submit();
+
+}
+else {
+  alert('Form incomplete')
+}
+
+
 
       } else {
         window.alert('No results found');

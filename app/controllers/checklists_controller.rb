@@ -1,3 +1,4 @@
+#
 class ChecklistsController < ApplicationController
   before_action :set_checklist, only: [:show, :edit, :update, :destroy]
 
@@ -10,11 +11,11 @@ class ChecklistsController < ApplicationController
   # GET /checklists/1
   # GET /checklists/1.json
   def show
-     tmp = @checklist.coord.split(',')
-     @lat = tmp[0]
-     @lng = tmp[1]
-     @srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=showMap"
-     @butterflies = Butterfly.where(checklist_id: params[:id])
+    tmp = @checklist.coord.split(',')
+    @lat = tmp[0]
+    @lng = tmp[1]
+    @srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=showMap"
+    @butterflies = Butterfly.where(checklist_id: params[:id])
   end
 
   # GET /checklists/new
@@ -31,7 +32,6 @@ class ChecklistsController < ApplicationController
     @lat = tmp[0]
     @lng = tmp[1]
     @srctext = "https://maps.googleapis.com/maps/api/js?key="+ENV["GOOGLE_MAPS_KEY"]+"&callback=initMap2"
-
   end
 
   # POST /checklists
