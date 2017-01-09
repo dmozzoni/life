@@ -13,15 +13,23 @@ class ButterfliesController < ApplicationController
 
   # GET checklists/1/butterflies/new
   def new
+    @submit_init = ''
+
     @butterfly = @checklist.butterflies.build
   end
 
   # GET checklists/1/butterflies/1/edit
   def edit
+
+    @submit_init = @butterfly.species
+
+
   end
 
   # POST checklists/1/butterflies
   def create
+
+    @submit_init = ""
 
 
     if @checklist.user == current_user
@@ -33,9 +41,9 @@ class ButterfliesController < ApplicationController
       else
         render action: 'new'
       end
-      
+
     else
-      flash[:alert] = "Only the author of the Checklist can add Butterfly"
+      flash[:alert] = "Only the author of the Checklist can add a Butterfly."
       redirect_to checklist_butterflies_path
     end
 
@@ -64,6 +72,8 @@ class ButterfliesController < ApplicationController
     # @checklist = Checklist.find(params[:id])
     if @butterfly.user == current_user
 
+      @submit_init = @butterfly.species
+
       if @butterfly.update_attributes(butterfly_params)
         redirect_to([@butterfly.checklist, @butterfly], notice: 'Butterfly was successfully updated.')
       else
@@ -71,7 +81,7 @@ class ButterfliesController < ApplicationController
       end
 
     else
-      flash[:alert] = "Only the author of the Butterfly can Update"
+      flash[:alert] = "Only the author of the Butterfly can Update it."
       redirect_to checklist_butterflies_path
     end
 
@@ -95,7 +105,7 @@ class ButterfliesController < ApplicationController
     if @butterfly.user == current_user
       @butterfly.destroy
     else
-      flash[:alert] = "Only the author of the Butterfly Observation can delete"
+      flash[:alert] = "Only the author of the Butterfly Observation can delete it."
     end
     redirect_to checklist_butterflies_url(@checklist)
   end

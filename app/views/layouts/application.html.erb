@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Life</title>
+    <title>Lifelist </title>
     <%= csrf_meta_tags %>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,28 +11,30 @@
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
 
+
+<header id="headerbanner">
+  <img class="navimg circle" src="/assets/IMG_4697.jpg" alt="butterfly">
+  <h4>Butterflying Lifelist</h4>
+</header>
+
+
+
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Butterfly Lifelist</a>
-        <ul id="nav-mobile" class="right">
+        <ul id="nav" class="right">
           <% if user_signed_in? %>
             <li> <%= link_to "Checklists", checklists_path %> </li>
             <li> <%= link_to "Stats", user_path(current_user) %> </li>
+            <li> <%= link_to "Quiz", 'http://dmozzoni.github.io/ProjectOne' %> </li>
             <li> <%= link_to 'Edit profile', edit_user_registration_path %> </li>
             <li> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
           <% else %>
+            <li> <%= link_to "Quiz", 'http://dmozzoni.github.io/ProjectOne' %> </li>
             <li> <%= link_to "Sign up", new_user_registration_path %> </li>
             <li> <%= link_to "Login", new_user_session_path %> </li>
           <% end %>
         </ul>
-        <p class='right'>
-            <% if user_signed_in? %>
-              Logged in as <strong><%= current_user.email %></strong>.
-            <% end %>
-        </p>
-
       </div>
-
     </nav>
 
 
@@ -62,19 +63,16 @@
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <h5 class="white-text">Useful Online Resources</h5>
                 <ul>
                     <li>
-                        <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+                        <a class="grey-text text-lighten-3" href="http://www.e-butterfly.org/">eButterfly</a>
                     </li>
                     <li>
-                        <a class="grey-text text-lighten-3" href="#!">Link 2</a>
+                        <a class="grey-text text-lighten-3" href="http://www.butterfliesandmoths.org/">Butterflies and Moths of North America</a>
                     </li>
                     <li>
-                        <a class="grey-text text-lighten-3" href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a class="grey-text text-lighten-3" href="#!">Link 4</a>
+                        <a class="grey-text text-lighten-3" href="http://www.butterfliesofamerica.com/">Butterflies of America</a>
                     </li>
                 </ul>
             </div>

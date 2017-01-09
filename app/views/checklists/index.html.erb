@@ -24,10 +24,27 @@
         <td><%= checklist.note %></td>
         <td><%= checklist.butterflies.count %></td>
 
-        <td><%= link_to 'Show', checklist %></td>
-        <td><%= link_to 'Edit', edit_checklist_path(checklist) %></td>
-        <td><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Butterflies', checklist_butterflies_path(checklist) %></td>
+
+        <td>
+        <%= link_to(checklist) do %>
+        <i class='small material-icons'>visibility</i>
+        <% end %>
+        </td>
+        <td>
+        <%= link_to(edit_checklist_path(checklist)) do %>
+        <i class='small material-icons'>settings_applications</i>
+        <% end %>
+        </td>
+        <td>
+        <%= link_to(checklist, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+        <i class='small material-icons'>delete</i>
+        <% end %>
+        </td>
+        <td>
+        <%= link_to(checklist_butterflies_path(checklist)) do %>
+        <i class='small material-icons'>list</i>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

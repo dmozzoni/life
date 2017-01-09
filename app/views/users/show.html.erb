@@ -13,19 +13,13 @@ $(document).ready(function() {
 </script>
 
 
-
-<p>
-  <strong>User:</strong>
-  <%= current_user.email %>
-</p>
-
-
 <ul class="tab">
   <li><a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'Life')" id="defaultOpen">Life</a></li>
   <li><a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'Country')">Country</a></li>
   <li><a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'State')">State</a></li>
   <li><a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'County')">County</a></li>
 </ul>
+
 
 <div id="Life" class="tabcontent">
 
@@ -125,7 +119,3 @@ $(document).ready(function() {
     </tbody>
   </table>
 </div>
-
-
-
-<%= link_to 'Back', checklists_path %>

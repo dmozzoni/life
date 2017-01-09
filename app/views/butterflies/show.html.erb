@@ -1,23 +1,41 @@
-<p>
-  <b>Species:</b>
-  <%= @butterfly.species %>
-</p>
 
-<p>
-  <b>Num:</b>
-  <%= @butterfly.num %>
-</p>
-
-<p>
-  <b>Img url:</b>
-  <%= @butterfly.img_url %>
-</p>
-
-<p>
-  <b>Note:</b>
-  <%= @butterfly.note %>
-</p>
+<div class="container">
+<div class="col s10">
+  <h2 class="header">Butterfly Record</h2>
+  <div class="card horizontal">
+    <div class="card-image valign-wrapper">
 
 
-<%= link_to 'Edit', edit_checklist_butterfly_path(@butterfly.checklist, @butterfly) %> |
-<%= link_to 'Back', checklist_butterflies_path(@butterfly.checklist) %>
+      <% if @butterfly.img_url === '' %>
+        <img src="/assets/butterfly_yellow.png">
+      <% else %>
+        <%= image_tag @butterfly.img_url %>
+      <% end %>
+
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <p>
+          <b>Species:</b>
+          <%= @butterfly.species %>
+        </p>
+
+        <p>
+          <b>Num:</b>
+          <%= @butterfly.num %>
+        </p>
+
+        <p>
+          <b>Note:</b>
+          <%= @butterfly.note %>
+        </p>
+      </div>
+      <div class="card-action">
+        <%= link_to 'Edit', edit_checklist_butterfly_path(@butterfly.checklist, @butterfly) %>
+        <%= link_to 'Back', checklist_butterflies_path(@butterfly.checklist) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
