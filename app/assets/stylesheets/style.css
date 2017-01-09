@@ -2,15 +2,27 @@ td, th {
   text-align: center;
 }
 body {
-  background-color: lightblue;
+  background-color: #c8e6c9;
+  min-width: 740px;
+  /*display: flex;
+  min-height: 100vh;
+  flex-direction: column;*/
 }
-.navimg {
-width: 64px;
+main {
+  /*flex: 1 0 auto;*/
 }
-zzzzznav {
-  border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
 
+.collapsible-body {
+  background-color: #e8f5e9;
+}
+
+
+#loginCard {
+  margin-top: 0;
+}
+
+.navimg {
+  width: 64px;
 }
 #headerbanner {
   position: absolute;
@@ -18,4 +30,17 @@ zzzzznav {
 #headerbanner h4 {
   margin-top: -55px;
   margin-left: 75px;
+}
+
+nav {
+  background-color: #4caf50;
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
+  height: 64px;
+}
+
+footer.page-footer {
+  background-color: #4caf50;
+  /*border-top-left-radius: 50px;*/
+  /*border-bottom-left-radius: 50px;*/
 }

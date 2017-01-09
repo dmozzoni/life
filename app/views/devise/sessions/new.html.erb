@@ -1,9 +1,10 @@
 
 
-
-<div class="row">
-     <div class="col s12 m5">
-       <div class="card-panel">
+<div class="container">
+  <div class="row"></div>
+    <div class="row">
+     <div  class="col s6">
+       <div id='loginCard' class="card-panel">
          <span class="black-text">
            <h2>Log in</h2>
 
@@ -32,8 +33,46 @@
 
            <%= render "devise/shared/links" %>
 
-
          </span>
        </div>
      </div>
+     <div class="col s6">
+
+       <div class="slider">
+         <ul class="slides">
+           <li>
+             <img src="/assets/IMG_4697.jpg">
+             <div class="caption center-align">
+               <h5 class="light grey-text text-lighten-3">Baltimore Checkerspot</h5>
+             </div>
+           </li>
+           <li>
+             <img src="/assets/IMG_5811.jpg">
+             <div class="caption left-align">
+               <h5 class="light grey-text text-lighten-3">Harvester</h5>
+             </div>
+           </li>
+           <li>
+             <img src="/assets/IMG_4218.jpg">
+             <div class="caption center-align">
+               <h5 class="light grey-text text-lighten-3">Silver-bordered Fritillary</h5>
+             </div>
+           </li>
+           <li>
+             <img src="/assets/IMG_6239.jpg">
+             <div class="caption right-align">
+               <h5 class="light grey-text text-lighten-3">Red-banded Hairstreak</h5>
+             </div>
+           </li>
+         </ul>
+       </div>
+     </div>
    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('.slider').slider();
+  });
+
+</script>

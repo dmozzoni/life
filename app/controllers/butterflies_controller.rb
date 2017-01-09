@@ -1,3 +1,4 @@
+#
 class ButterfliesController < ApplicationController
   before_action :set_butterflies
   before_action :set_butterfly, only: [:show, :edit, :update, :destroy]
@@ -14,24 +15,18 @@ class ButterfliesController < ApplicationController
   # GET checklists/1/butterflies/new
   def new
     @submit_init = ''
-
     @butterfly = @checklist.butterflies.build
   end
 
   # GET checklists/1/butterflies/1/edit
   def edit
-
     @submit_init = @butterfly.species
-
-
   end
 
   # POST checklists/1/butterflies
   def create
 
     @submit_init = ""
-
-
     if @checklist.user == current_user
 
       @butterfly = @checklist.butterflies.build(butterfly_params.merge(user: current_user))
@@ -46,14 +41,6 @@ class ButterfliesController < ApplicationController
       flash[:alert] = "Only the author of the Checklist can add a Butterfly."
       redirect_to checklist_butterflies_path
     end
-
-
-
-
-
-
-
-
   end
 
 
@@ -69,7 +56,6 @@ class ButterfliesController < ApplicationController
 
   def update
 
-    # @checklist = Checklist.find(params[:id])
     if @butterfly.user == current_user
 
       @submit_init = @butterfly.species
@@ -81,40 +67,21 @@ class ButterfliesController < ApplicationController
       end
 
     else
-      flash[:alert] = "Only the author of the Butterfly can Update it."
+      flash[:alert] = 'Only the author of the Butterfly can Update it.'
       redirect_to checklist_butterflies_path
     end
-
   end
 
-
-
-
-
-
   # DELETE checklists/1/butterflies/1
-  # def destroy
-  #   @butterfly.destroy
-  #
-  #   redirect_to checklist_butterflies_url(@checklist)
-  # end
-
-
   def destroy
     @butterfly = Butterfly.find(params[:id])
     if @butterfly.user == current_user
       @butterfly.destroy
     else
-      flash[:alert] = "Only the author of the Butterfly Observation can delete it."
+      flash[:alert] = 'Only the author of the Butterfly Observation can delete it.'
     end
     redirect_to checklist_butterflies_url(@checklist)
   end
-
-
-
-
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

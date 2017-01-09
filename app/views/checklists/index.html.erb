@@ -1,17 +1,28 @@
-<p id="notice"><%= notice %></p>
+<script>
+$(document).ready(function() {
+    // call the tablesorter plugin
+    $(".tablesorter").tablesorter({
+        // sort on the first column and third column, order asc
+    });
+});
+</script>
 
-<h1>Checklists</h1>
 
-<table>
+
+<h2 class="header">User Checklists
+<span class="spanEdit"><%= link_to 'New', new_checklist_path %></span>
+</h2>
+
+
+<table class="tablesorter striped">
   <thead>
     <tr>
       <th>Date</th>
       <th>Location</th>
-      <th>Coord</th>
-      <th>Note</th>
+      <th>State</th>
+      <th class="tabWidNote">Note</th>
       <th>Num of Species</th>
-
-      <th colspan="3"></th>
+      <th>Functions</th>
     </tr>
   </thead>
 
@@ -20,8 +31,8 @@
       <tr>
         <td><%= checklist.date %></td>
         <td><%= checklist.location %></td>
-        <td><%= checklist.coord %></td>
-        <td><%= checklist.note %></td>
+        <td><%= checklist.state %></td>
+        <td class="tabWidNote"><%= checklist.note %></td>
         <td><%= checklist.butterflies.count %></td>
 
 
@@ -29,18 +40,12 @@
         <%= link_to(checklist) do %>
         <i class='small material-icons'>visibility</i>
         <% end %>
-        </td>
-        <td>
         <%= link_to(edit_checklist_path(checklist)) do %>
         <i class='small material-icons'>settings_applications</i>
         <% end %>
-        </td>
-        <td>
         <%= link_to(checklist, method: :delete, data: { confirm: 'Are you sure?' }) do %>
         <i class='small material-icons'>delete</i>
         <% end %>
-        </td>
-        <td>
         <%= link_to(checklist_butterflies_path(checklist)) do %>
         <i class='small material-icons'>list</i>
         <% end %>
@@ -49,13 +54,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-<br>
-
-Unique Species Total for User: <%= current_user.checklists.map{|i| i.butterflies.map{|j| j.species}}.flatten.uniq.count %>
-
-<br>
-<br>
-
-<%= link_to 'New Checklist', new_checklist_path %>

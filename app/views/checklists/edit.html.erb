@@ -1,4 +1,7 @@
-<h1>Editing Checklist</h1>
+
+<h2 class="header">Editing Checklist
+<span class="spanEdit"><%= link_to 'Back', @checklist %></span>
+</h2>
 
 <div class='container'>
     <div class='row'>
@@ -15,7 +18,3 @@
     setLatLng(<%= @lat %>, <%= @lng %>);
 </script>
 <script async defer src=<%= @srctext %>></script>
-
-
-<%= link_to 'Show', @checklist %> |
-<%= link_to 'Back', checklists_path %>
