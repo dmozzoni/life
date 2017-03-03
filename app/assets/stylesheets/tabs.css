@@ -1,4 +1,6 @@
-body {font-family: "Lato", sans-serif;}
+body {
+    font-family: "Lato", sans-serif;
+}
 
 ul.tab {
     list-style-type: none;
@@ -11,10 +13,16 @@ ul.tab {
     width: 402px;
 }
 
+
 /* Float the list items side by side */
-ul.tab li {float: left;}
+
+ul.tab li {
+    float: left;
+}
+
 
 /* Style the links inside the list items */
+
 ul.tab li a {
     display: inline-block;
     color: black;
@@ -26,17 +34,23 @@ ul.tab li a {
     width: 100px;
 }
 
+
 /* Change background color of links on hover */
+
 ul.tab li a:hover {
     background-color: #ddd;
 }
 
+
 /* Create an active/current tablink class */
+
 ul.tab li a:focus, .activeTab {
     background-color: #ccc;
 }
 
+
 /* Style the tab content */
+
 .tabcontent {
     display: none;
     padding: 6px 12px;
@@ -45,11 +59,19 @@ ul.tab li a:focus, .activeTab {
 }
 
 @-webkit-keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

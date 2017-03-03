@@ -1,46 +1,40 @@
 td, th {
-  text-align: center;
+    text-align: center;
 }
+
 body {
-  background-color: #c8e6c9;
-  min-width: 740px;
-  /*display: flex;
-  min-height: 100vh;
-  flex-direction: column;*/
-}
-main {
-  /*flex: 1 0 auto;*/
+    background-color: #c8e6c9;
+    min-width: 740px;
 }
 
 .collapsible-body {
-  background-color: #e8f5e9;
+    background-color: #e8f5e9;
 }
 
-
 #loginCard {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .navimg {
-  width: 64px;
+    width: 64px;
 }
+
 #headerbanner {
-  position: absolute;
+    position: absolute;
 }
+
 #headerbanner h4 {
-  margin-top: -55px;
-  margin-left: 75px;
+    margin-top: -55px;
+    margin-left: 75px;
 }
 
 nav {
-  background-color: #4caf50;
-  border-top-left-radius: 32px;
-  border-bottom-left-radius: 32px;
-  height: 64px;
+    background-color: #4caf50;
+    border-top-left-radius: 32px;
+    border-bottom-left-radius: 32px;
+    height: 64px;
 }
 
 footer.page-footer {
-  background-color: #4caf50;
-  /*border-top-left-radius: 50px;*/
-  /*border-bottom-left-radius: 50px;*/
+    background-color: #4caf50;
 }

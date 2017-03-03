@@ -1,91 +1,98 @@
 // Place all the styles related to the Checklists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
- #map {
-   height: 400px;
-   width: 100%;
- }
- #map3 {
-   height: 400px;
-   width: 100%;
- }
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+#map3 {
+    height: 400px;
+    width: 100%;
+}
+
 #map2 {
-  height: 100%;
-  width: 300px;
+    height: 100%;
+    width: 300px;
 }
 
 #ncfsub {
-  display: none;
+    display: none;
 }
 
 .spanEdit {
-  font-size: 14px;
+    font-size: 14px;
+}
+/* Optional: Makes the sample page fill the window. */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-/* Optional: Makes the sample page fill the window. */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
 #current {
     padding-top: 25px;
 }
 
 #floating-panel {
-  position: absolute;
-  top: 10px;
-  left: 25%;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-  text-align: center;
-  font-family: 'Roboto','sans-serif';
-  line-height: 30px;
-  padding-left: 10px;
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
 }
+
 #floating-panel {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  margin-left: -180px;
-  width: 350px;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-}#floating-panel3 {
-  position: absolute;
-  top: 10px;
-  left: 25%;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-  text-align: center;
-  font-family: 'Roboto','sans-serif';
-  line-height: 30px;
-  padding-left: 10px;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    margin-left: -180px;
+    width: 350px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
 }
+
 #floating-panel3 {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  margin-left: -180px;
-  width: 350px;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
 }
+
+#floating-panel3 {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    margin-left: -180px;
+    width: 350px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+}
+
 #latlng {
-  width: 225px;
-}#latlng3 {
-  width: 225px;
+    width: 225px;
+}
+
+#latlng3 {
+    width: 225px;
 }

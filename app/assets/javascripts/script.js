@@ -88,10 +88,10 @@ function geocodeLatLng(geocoder, map, infowindow) {
         if (document.getElementById("checklist_location").value !== '' && document.getElementById("checklist_date").value !== '' ) {
 
           $('#new_checklist').submit();
-        
+
         }
         else {
-          alert('Form incomplete')
+          alert('Form incomplete');
         }
 
 
