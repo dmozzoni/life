@@ -1,99 +1,84 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Lifelist </title>
-    <%= csrf_meta_tags %>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <head>
+        <title>Lifelist
+        </title>
+        <%= csrf_meta_tags %>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <%= render 'application/favicon' %>
+    </head>
 
-  </head>
-  <body class="<%= controller_name %> <%= action_name %>">
+    <body class="<%= controller_name %> <%= action_name %>">
 
+        <header id="headerbanner">
+            <img class="navimg circle" src="/assets/IMG_4697.jpg" alt="butterfly">
+            <h4>Butterflying Life Lists</h4>
+        </header>
 
-<header id="headerbanner">
-  <img class="navimg circle" src="/assets/IMG_4697.jpg" alt="butterfly">
-  <h4>Butterflying Life Lists</h4>
-</header>
-
-    <nav>
-      <div class="nav-wrapper">
-        <ul id="nav" class="right">
-          <% if user_signed_in? %>
-            <li> <%= link_to "Checklists", checklists_path %> </li>
-            <li> <%= link_to "Stats", user_path(current_user) %> </li>
-            <li> <%= link_to "Quiz", 'http://dmozzoni.github.io/ProjectOne' %> </li>
-            <li> <%= link_to 'Edit profile', edit_user_registration_path %> </li>
-            <li> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
-          <% else %>
-            <li> <%= link_to "Quiz", 'http://dmozzoni.github.io/ProjectOne' %> </li>
-            <li> <%= link_to "Sign up", new_user_registration_path %> </li>
-            <li> <%= link_to "Login", new_user_session_path %> </li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
-
-
-
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-
-
-
-
-
-
-    <%= yield %>
-
-
-
-<footer class="page-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col s6">
-                <h5 class="white-text">Contact</h5>
-                <p class="grey-text text-lighten-4">
-                  <div class="social">
-              			<a href="https://github.com/dmozzoni">
-              				<img src="/assets/GitHub_Logo.png" alt="Github" width="110">
-              			</a>
-              			<a href="https://www.linkedin.com/in/david-mozzoni">
-              				<img src="/assets/In-2CRev-48px-R.png" alt="Linked-In">
-              			</a> <br>
-              			<a href="https://www.codewars.com/users/dmozzoni">
-              				<img src="https://www.codewars.com/users/dmozzoni/badges/micro" alt="Codewars">
-              			</a>
-              			<a href="http://www.inaturalist.org/people/1620">
-              				<img alt="iNaturalist.org" src="https://static.inaturalist.org/sites/1-logo.png?1433365372" />
-              			</a>
-              		</div>
-                </p>
-            </div>
-            <div class="col s6">
-                <h5 class="white-text">Useful Butterflying Resources</h5>
-                <ul>
-                    <li>
-                        <a class="grey-text text-lighten-3" href="http://www.e-butterfly.org/">eButterfly</a>
-                    </li>
-                    <li>
-                        <a class="grey-text text-lighten-3" href="http://www.butterfliesandmoths.org/">Butterflies and Moths of North America</a>
-                    </li>
-                    <li>
-                        <a class="grey-text text-lighten-3" href="http://www.butterfliesofamerica.com/">Butterflies of America</a>
-                    </li>
+        <nav>
+            <div class="nav-wrapper">
+                <ul id="nav" class="right">
+                  <% if user_signed_in? %>
+                    <li> <%= link_to "Checklists", checklists_path %> </li>
+                    <li> <%= link_to "Stats", user_path(current_user) %> </li>
+                    <li> <%= link_to "Quiz", 'http://dmozzoni.github.io/ProjectOne' %> </li>
+                    <li> <%= link_to 'Edit profile', edit_user_registration_path %> </li>
+                    <li> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
+                  <% else %>
+                    <li> <%= link_to "Quiz", 'http://dmozzoni.github.io/ProjectOne' %> </li>
+                    <li> <%= link_to "Sign up", new_user_registration_path %> </li>
+                    <li> <%= link_to "Login", new_user_session_path %> </li>
+                  <% end %>
                 </ul>
             </div>
-        </div>
-    </div>
-</footer>
+        </nav>
 
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
 
+        <%= yield %>
 
-  </body>
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col s6">
+                        <h5 class="white-text">Contact</h5>
+                        <p class="grey-text text-lighten-4">
+                            <div class="social">
+                                <a href="https://github.com/dmozzoni">
+                                    <img src="/assets/GitHub_Logo.png" alt="Github" width="110">
+                                </a>
+                                <a href="https://www.linkedin.com/in/david-mozzoni">
+                                    <img src="/assets/In-2CRev-48px-R.png" alt="Linked-In">
+                                </a>
+                                <br>
+                                <a href="https://www.codewars.com/users/dmozzoni">
+                                    <img src="https://www.codewars.com/users/dmozzoni/badges/micro" alt="Codewars">
+                                </a>
+                                <a href="http://www.inaturalist.org/people/1620">
+                                    <img alt="iNaturalist.org" src="https://static.inaturalist.org/sites/1-logo.png?1433365372"/>
+                                </a>
+                            </div>
+                        </p>
+                    </div>
+                    <div class="col s6">
+                        <h5 class="white-text">Useful Butterflying Resources</h5>
+                        <ul>
+                            <li> <a class="grey-text text-lighten-3" href="http://www.e-butterfly.org/">eButterfly</a> </li>
+                            <li> <a class="grey-text text-lighten-3" href="http://www.butterfliesandmoths.org/">Butterflies and Moths of North America</a> </li>
+                            <li> <a class="grey-text text-lighten-3" href="http://www.butterfliesofamerica.com/">Butterflies of America</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </body>
 </html>

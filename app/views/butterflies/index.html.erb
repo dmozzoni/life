@@ -1,47 +1,48 @@
-
 <script>
-$(document).ready(function() {
-    // call the tablesorter plugin
-    $(".tablesorter").tablesorter({
-        // sort on the first column and third column, order asc
+    $(document).ready(function () {
+        // call the tablesorter plugin
+        $(".tablesorter").tablesorter({
+            // sort on the first column and third column, order asc
+        });
     });
-});
 </script>
 
 <h2 class="header">Listing Butterflies
-  <span class="spanEdit"><%= link_to 'Add', new_checklist_butterfly_path(params[:checklist_id]) %> | </span>
-  <span class="spanEdit"><%= link_to 'Checklist', checklist_path(params[:checklist_id]) %></span>
+    <span class="spanEdit"><%= link_to 'Add', new_checklist_butterfly_path(params[:checklist_id]) %>
+        |
+    </span>
+    <span class="spanEdit"><%= link_to 'Checklist', checklist_path(params[:checklist_id]) %></span>
 </h2>
 
 <table class="tablesorter striped">
-  <thead>
-    <tr>
-        <th>Species</th>
-        <th>Number</th>
-        <th class="tabWidNote">Note</th>
-        <th>Functions</th>
-    </tr>
-  </thead>
+    <thead>
+        <tr>
+            <th>Species</th>
+            <th>Number</th>
+            <th class="tabWidNote">Note</th>
+            <th>Functions</th>
+        </tr>
+    </thead>
 
-  <tbody>
-    <% @butterflies.each do |butterfly| %>
-      <tr>
-        <td><%= butterfly.species %></td>
-        <td><%= butterfly.num %></td>
-        <td class="tabWidNote"><%= butterfly.note %></td>
+    <tbody>
+        <% @butterflies.each do |butterfly| %>
+        <tr>
+            <td><%= butterfly.species %></td>
+            <td><%= butterfly.num %></td>
+            <td class="tabWidNote"><%= butterfly.note %></td>
 
-        <td>
-        <%= link_to([butterfly.checklist, butterfly]) do %>
-        <i class='small material-icons'>visibility</i>
+            <td>
+                <%= link_to([butterfly.checklist, butterfly]) do %>
+                <i class='small material-icons'>visibility</i>
+                <% end %>
+                <%= link_to(edit_checklist_butterfly_path(butterfly.checklist, butterfly)) do %>
+                <i class='small material-icons'>settings_applications</i>
+                <% end %>
+                <%= link_to([butterfly.checklist, butterfly], method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                <i class='small material-icons'>delete</i>
+                <% end %>
+            </td>
+        </tr>
         <% end %>
-        <%= link_to(edit_checklist_butterfly_path(butterfly.checklist, butterfly)) do %>
-        <i class='small material-icons'>settings_applications</i>
-        <% end %>
-        <%= link_to([butterfly.checklist, butterfly], method: :delete, data: { confirm: 'Are you sure?' }) do %>
-        <i class='small material-icons'>delete</i>
-        <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
+    </tbody>
 </table>

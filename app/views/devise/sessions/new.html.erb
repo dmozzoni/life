@@ -1,78 +1,75 @@
-
-
 <div class="container">
-  <div class="row"></div>
+    <div class="row"></div>
     <div class="row">
-     <div  class="col s6">
-       <div id='loginCard' class="card-panel">
-         <span class="black-text">
-           <h2>Log in</h2>
+        <div class="col s6">
+            <div id='loginCard' class="card-panel">
+                <span class="black-text">
+                    <h2>Log in</h2>
 
-           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-             <div class="field">
-               <%= f.label :email %><br />
-               <%= f.email_field :email, autofocus: true %>
-             </div>
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                    <div class="field">
+                        <%= f.label :email %><br/>
+                        <%= f.email_field :email, autofocus: true %>
+                    </div>
 
-             <div class="field">
-               <%= f.label :password %><br />
-               <%= f.password_field :password, autocomplete: "off" %>
-             </div>
+                    <div class="field">
+                        <%= f.label :password %><br/>
+                        <%= f.password_field :password, autocomplete: "off" %>
+                    </div>
 
-             <% if devise_mapping.rememberable? -%>
-               <div class="field">
-                 <%= f.check_box :remember_me %>
-                 <%= f.label :remember_me %>
-               </div>
-             <% end -%>
+                    <% if devise_mapping.rememberable? -%>
+                    <div class="field">
+                        <%= f.check_box :remember_me %>
+                        <%= f.label :remember_me %>
+                    </div>
+                    <% end -%>
 
-             <div class="actions">
-               <%= f.submit "Log in" %>
-             </div>
-           <% end %>
+                    <div class="actions">
+                        <%= f.submit "Log in" %>
+                    </div>
+                    <% end %>
 
-           <%= render "devise/shared/links" %>
+                    <%= render "devise/shared/links" %>
 
-         </span>
-       </div>
-     </div>
-     <div class="col s6">
+                </span>
+            </div>
+        </div>
+        <div class="col s6">
 
-       <div class="slider">
-         <ul class="slides">
-           <li>
-             <img src="/assets/IMG_4697.jpg">
-             <div class="caption center-align">
-               <h5 class="light grey-text text-lighten-3">Baltimore Checkerspot</h5>
-             </div>
-           </li>
-           <li>
-             <img src="/assets/IMG_5811.jpg">
-             <div class="caption left-align">
-               <h5 class="light grey-text text-lighten-3">Harvester</h5>
-             </div>
-           </li>
-           <li>
-             <img src="/assets/IMG_4218.jpg">
-             <div class="caption center-align">
-               <h5 class="light grey-text text-lighten-3">Silver-bordered Fritillary</h5>
-             </div>
-           </li>
-           <li>
-             <img src="/assets/IMG_6239.jpg">
-             <div class="caption right-align">
-               <h5 class="light grey-text text-lighten-3">Red-banded Hairstreak</h5>
-             </div>
-           </li>
-         </ul>
-       </div>
-     </div>
-   </div>
+            <div class="slider">
+                <ul class="slides">
+                    <li>
+                        <img src="/assets/IMG_4697.jpg">
+                        <div class="caption center-align">
+                            <h5 class="light grey-text text-lighten-3">Baltimore Checkerspot</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="/assets/IMG_5811.jpg">
+                        <div class="caption left-align">
+                            <h5 class="light grey-text text-lighten-3">Harvester</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="/assets/IMG_4218.jpg">
+                        <div class="caption center-align">
+                            <h5 class="light grey-text text-lighten-3">Silver-bordered Fritillary</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="/assets/IMG_6239.jpg">
+                        <div class="caption right-align">
+                            <h5 class="light grey-text text-lighten-3">Red-banded Hairstreak</h5>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-$(document).ready(function(){
-  $('.slider').slider();
-  });
-
+    $(document).ready(function () {
+        $('.slider').slider();
+    });
 </script>

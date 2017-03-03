@@ -1,7 +1,8 @@
-
 <h2 class="header">Editing Butterfly
-  <span class="spanEdit"><%= link_to 'Back', [@butterfly.checklist, @butterfly] %> | </span>
-  <span class="spanEdit"><%= link_to 'Checklist', checklist_butterflies_path(@butterfly.checklist) %></span>
+    <span class="spanEdit"><%= link_to 'Back', [@butterfly.checklist, @butterfly] %>
+        |
+    </span>
+    <span class="spanEdit"><%= link_to 'Checklist', checklist_butterflies_path(@butterfly.checklist) %></span>
 </h2>
 
 <%= render 'form' %>

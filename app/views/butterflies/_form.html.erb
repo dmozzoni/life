@@ -1,189 +1,188 @@
-
 <div class="container">
-<div class="row">
-     <div class="col s8">
-       <div class="card-panel">
-         <span class="black-text">
+    <div class="row">
+        <div class="col s8">
+            <div class="card-panel">
+                <span class="black-text">
 
-           <%= form_for([@butterfly.checklist, @butterfly]) do |f| %>
-             <% if @butterfly.errors.any? %>
-               <div id="error_explanation">
-                 <h2><%= pluralize(@butterfly.errors.count, "error") %> prohibited this butterfly from being saved:</h2>
+                    <%= form_for([@butterfly.checklist, @butterfly]) do |f| %>
+                    <% if @butterfly.errors.any? %>
+                    <div id="error_explanation">
+                        <h2><%= pluralize(@butterfly.errors.count, "error") %>
+                            prohibited this butterfly from being saved:</h2>
 
-                 <ul>
-                 <% @butterfly.errors.full_messages.each do |msg| %>
-                   <li><%= msg %></li>
-                 <% end %>
-                 </ul>
-               </div>
-             <% end %>
+                        <ul>
+                            <% @butterfly.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                    <% end %>
 
-             <% if (defined?(@butterfly.species)).nil? %>
-               <% select_init = "" %>
-             <% else %>
-               <% select_init = @butterfly.species %>
-             <% end %>
+                    <% if (defined?(@butterfly.species)).nil? %>
+                    <% select_init = "" %>
+                <% else %>
+                    <% select_init = @butterfly.species %>
+                    <% end %>
 
-             <div class="field">
-               <div class="input-field col s12">
-                   <select name="butterfly[species]" id="butterfly_species" size="8x10">
-                     <option value="" disabled >Select</option>
-                     <optgroup label="Brush-footed">
-                     <option value="American Snout">American Snout</option>
-                     <option value="Monarch">Monarch</option>
-                     <option value="Variegated Fritillary">Variegated Fritillary</option>
-                     <option value="Meadow Fritillary">Meadow Fritillary</option>
-                     <option value="Silver-bordered Fritillary">Silver-bordered Fritillary</option>
-                     <option value="Aphrodite Fritillary">Aphrodite Fritillary</option>
-                     <option value="Great Spangled Fritillary">Great Spangled Fritillary</option>
-                     <option value="Regal Fritillary">Regal Fritillary</option>
-                     <option value="Viceroy">Viceroy</option>
-                     <option value="White Admiral">White Admiral</option>
-                     <option value="Red-spotted Purple">Red-spotted Purple</option>
-                     <option value="Red Admiral">Red Admiral</option>
-                     <option value="Painted Lady">Painted Lady</option>
-                     <option value="American Lady">American Lady</option>
-                     <option value="Milbert's Tortoiseshell">Milbert's Tortoiseshell</option>
-                     <option value="Mourning Cloak">Mourning Cloak</option>
-                     <option value="Compton Tortoiseshell">Compton Tortoiseshell</option>
-                     <option value="Eastern Comma">Eastern Comma</option>
-                     <option value="Question Mark">Question Mark</option>
-                     <option value="Common Buckeye">Common Buckeye</option>
-                     <option value="Baltimore Checkerspot">Baltimore Checkerspot</option>
-                     <option value="Pearl Crescent">Pearl Crescent</option>
-                     <option value="Northern Pearly-Eye">Northern Pearly-Eye</option>
-                     <option value="Appalachian Brown">Appalachian Brown</option>
-                     <option value="Eyed Brown">Eyed Brown</option>
-                     <option value="Common Ringlet">Common Ringlet</option>
-                     <option value="Little Wood Satyr">Little Wood Satyr</option>
-                     <option value="Common Wood-Nymph">Common Wood-Nymph</option>
-                     </optgroup>
+                    <div class="field">
+                        <div class="input-field col s12">
+                            <select name="butterfly[species]" id="butterfly_species" size="8x10">
+                                <option value="" disabled>Select</option>
+                                <optgroup label="Brush-footed">
+                                    <option value="American Snout">American Snout</option>
+                                    <option value="Monarch">Monarch</option>
+                                    <option value="Variegated Fritillary">Variegated Fritillary</option>
+                                    <option value="Meadow Fritillary">Meadow Fritillary</option>
+                                    <option value="Silver-bordered Fritillary">Silver-bordered Fritillary</option>
+                                    <option value="Aphrodite Fritillary">Aphrodite Fritillary</option>
+                                    <option value="Great Spangled Fritillary">Great Spangled Fritillary</option>
+                                    <option value="Regal Fritillary">Regal Fritillary</option>
+                                    <option value="Viceroy">Viceroy</option>
+                                    <option value="White Admiral">White Admiral</option>
+                                    <option value="Red-spotted Purple">Red-spotted Purple</option>
+                                    <option value="Red Admiral">Red Admiral</option>
+                                    <option value="Painted Lady">Painted Lady</option>
+                                    <option value="American Lady">American Lady</option>
+                                    <option value="Milbert's Tortoiseshell">Milbert's Tortoiseshell</option>
+                                    <option value="Mourning Cloak">Mourning Cloak</option>
+                                    <option value="Compton Tortoiseshell">Compton Tortoiseshell</option>
+                                    <option value="Eastern Comma">Eastern Comma</option>
+                                    <option value="Question Mark">Question Mark</option>
+                                    <option value="Common Buckeye">Common Buckeye</option>
+                                    <option value="Baltimore Checkerspot">Baltimore Checkerspot</option>
+                                    <option value="Pearl Crescent">Pearl Crescent</option>
+                                    <option value="Northern Pearly-Eye">Northern Pearly-Eye</option>
+                                    <option value="Appalachian Brown">Appalachian Brown</option>
+                                    <option value="Eyed Brown">Eyed Brown</option>
+                                    <option value="Common Ringlet">Common Ringlet</option>
+                                    <option value="Little Wood Satyr">Little Wood Satyr</option>
+                                    <option value="Common Wood-Nymph">Common Wood-Nymph</option>
+                                </optgroup>
 
-                     <optgroup label="Swallowtails">
-                     <option value="Eastern Tiger Swallowtail">Eastern Tiger Swallowtail</option>
-                     <option value="Canadian Tiger Swallowtail">Canadian Tiger Swallowtail</option>
-                     <option value="Black Swallowtail">Black Swallowtail</option>
-                     <option value="Spicebush Swallowtail">Spicebush Swallowtail</option>
-                     <option value="Pipevine Swallowtail">Pipevine Swallowtail</option>
-                     <option value="Giant Swallowtail">Giant Swallowtail</option>
-                     <option value="Zebra Swallowtail">Zebra Swallowtail</option>
-                     </optgroup>
+                                <optgroup label="Swallowtails">
+                                    <option value="Eastern Tiger Swallowtail">Eastern Tiger Swallowtail</option>
+                                    <option value="Canadian Tiger Swallowtail">Canadian Tiger Swallowtail</option>
+                                    <option value="Black Swallowtail">Black Swallowtail</option>
+                                    <option value="Spicebush Swallowtail">Spicebush Swallowtail</option>
+                                    <option value="Pipevine Swallowtail">Pipevine Swallowtail</option>
+                                    <option value="Giant Swallowtail">Giant Swallowtail</option>
+                                    <option value="Zebra Swallowtail">Zebra Swallowtail</option>
+                                </optgroup>
 
-                     <optgroup label="Whites and Sulphurs">
-                     <option value="Dainty Sulphur">Dainty Sulphur</option>
-                     <option value="Little Yellow">Little Yellow</option>
-                     <option value="Orange Sulphur">Orange Sulphur</option>
-                     <option value="Clouded Sulphur">Clouded Sulphur</option>
-                     <option value="Cloudless Sulphur">Cloudless Sulphur</option>
-                     <option value="Mustard White">Mustard White</option>
-                     <option value="Cabbage White">Cabbage White</option>
-                     <option value="Checkered White">Checkered White</option>
-                     </optgroup>
+                                <optgroup label="Whites and Sulphurs">
+                                    <option value="Dainty Sulphur">Dainty Sulphur</option>
+                                    <option value="Little Yellow">Little Yellow</option>
+                                    <option value="Orange Sulphur">Orange Sulphur</option>
+                                    <option value="Clouded Sulphur">Clouded Sulphur</option>
+                                    <option value="Cloudless Sulphur">Cloudless Sulphur</option>
+                                    <option value="Mustard White">Mustard White</option>
+                                    <option value="Cabbage White">Cabbage White</option>
+                                    <option value="Checkered White">Checkered White</option>
+                                </optgroup>
 
-                     <optgroup label="Gossamer-winged">
-                     <option value="Harvester">Harvester</option>
-                     <option value="Bog Copper">Bog Copper</option>
-                     <option value="Bronze Copper">Bronze Copper</option>
-                     <option value="American Copper">American Copper</option>
-                     <option value="Acadian Hairstreak">Acadian Hairstreak</option>
-                     <option value="Banded Hairstreak">Banded Hairstreak</option>
-                     <option value="Hickory Hairstreak">Hickory Hairstreak</option>
-                     <option value="Edwards' Hairstreak">Edwards' Hairstreak</option>
-                     <option value="Oak Hairstreak">Oak Hairstreak</option>
-                     <option value="Striped Hairstreak">Striped Hairstreak</option>
-                     <option value="Coral Hairstreak">Coral Hairstreak</option>
-                     <option value="Brown Elfin">Brown Elfin</option>
-                     <option value="Juniper Hairstreak">Juniper Hairstreak</option>
-                     <option value="Henry's Elfin">Henry's Elfin</option>
-                     <option value="Hessel's Hairstreak">Hessel's Hairstreak</option>
-                     <option value="Frosted Elfin">Frosted Elfin</option>
-                     <option value="Eastern Pine Elfin">Eastern Pine Elfin</option>
-                     <option value="Red-banded Hairstreak">Red-banded Hairstreak</option>
-                     <option value="Gray Hairstreak">Gray Hairstreak</option>
-                     <option value="White-m Hairstreak">White-m Hairstreak</option>
-                     <option value="Eastern Tailed-Blue">Eastern Tailed-Blue</option>
-                     <option value="Spring Azure">Spring Azure</option>
-                     <option value="Summer Azure">Summer Azure</option>
-                     <option value="Cherry Gall Azure">Cherry Gall Azure</option>
-                     <option value="Silvery Blue">Silvery Blue</option>
-                     </optgroup>
+                                <optgroup label="Gossamer-winged">
+                                    <option value="Harvester">Harvester</option>
+                                    <option value="Bog Copper">Bog Copper</option>
+                                    <option value="Bronze Copper">Bronze Copper</option>
+                                    <option value="American Copper">American Copper</option>
+                                    <option value="Acadian Hairstreak">Acadian Hairstreak</option>
+                                    <option value="Banded Hairstreak">Banded Hairstreak</option>
+                                    <option value="Hickory Hairstreak">Hickory Hairstreak</option>
+                                    <option value="Edwards' Hairstreak">Edwards' Hairstreak</option>
+                                    <option value="Oak Hairstreak">Oak Hairstreak</option>
+                                    <option value="Striped Hairstreak">Striped Hairstreak</option>
+                                    <option value="Coral Hairstreak">Coral Hairstreak</option>
+                                    <option value="Brown Elfin">Brown Elfin</option>
+                                    <option value="Juniper Hairstreak">Juniper Hairstreak</option>
+                                    <option value="Henry's Elfin">Henry's Elfin</option>
+                                    <option value="Hessel's Hairstreak">Hessel's Hairstreak</option>
+                                    <option value="Frosted Elfin">Frosted Elfin</option>
+                                    <option value="Eastern Pine Elfin">Eastern Pine Elfin</option>
+                                    <option value="Red-banded Hairstreak">Red-banded Hairstreak</option>
+                                    <option value="Gray Hairstreak">Gray Hairstreak</option>
+                                    <option value="White-m Hairstreak">White-m Hairstreak</option>
+                                    <option value="Eastern Tailed-Blue">Eastern Tailed-Blue</option>
+                                    <option value="Spring Azure">Spring Azure</option>
+                                    <option value="Summer Azure">Summer Azure</option>
+                                    <option value="Cherry Gall Azure">Cherry Gall Azure</option>
+                                    <option value="Silvery Blue">Silvery Blue</option>
+                                </optgroup>
 
-                     <optgroup label="Skippers">
-                     <option value="Hoary Edge">Hoary Edge</option>
-                     <option value="Pepper and Salt Skipper">Pepper and Salt Skipper</option>
-                     <option value="Common Roadside-Skipper">Common Roadside-Skipper</option>
-                     <option value="Delaware Skipper">Delaware Skipper</option>
-                     <option value="Least Skipper">Least Skipper</option>
-                     <option value="Sachem Skipper">Sachem Skipper</option>
-                     <option value="Dusted Skipper">Dusted Skipper</option>
-                     <option value="Brazilian Skipper">Brazilian Skipper</option>
-                     <option value="Silver-spotted Skipper">Silver-spotted Skipper</option>
-                     <option value="Wild Indigo Duskywing">Wild Indigo Duskywing</option>
-                     <option value="Sleepy Duskywing">Sleepy Duskywing</option>
-                     <option value="Horace's Duskywing">Horace's Duskywing</option>
-                     <option value="Dreamy Duskywing">Dreamy Duskywing</option>
-                     <option value="Juvenal's Duskywing">Juvenal's Duskywing</option>
-                     <option value="Columbine Duskywing">Columbine Duskywing</option>
-                     <option value="Mottled Duskywing">Mottled Duskywing</option>
-                     <option value="Persius Duskywing">Persius Duskywing</option>
-                     <option value="Two-spotted Skipper">Two-spotted Skipper</option>
-                     <option value="Black Dash">Black Dash</option>
-                     <option value="Dion Skipper">Dion Skipper</option>
-                     <option value="Dun Skipper">Dun Skipper</option>
-                     <option value="Leonard's Skipper">Leonard's Skipper</option>
-                     <option value="Cobweb Skipper">Cobweb Skipper</option>
-                     <option value="Indian Skipper">Indian Skipper</option>
-                     <option value="Fiery Skipper">Fiery Skipper</option>
-                     <option value="Swarthy Skipper">Swarthy Skipper</option>
-                     <option value="Ocola Skipper">Ocola Skipper</option>
-                     <option value="Common Sootywing">Common Sootywing</option>
-                     <option value="Hobomok Skipper">Hobomok Skipper</option>
-                     <option value="Mulberry Wing">Mulberry Wing</option>
-                     <option value="Broad-winged Skipper">Broad-winged Skipper</option>
-                     <option value="Zabulon Skipper">Zabulon Skipper</option>
-                     <option value="Long Dash Skipper">Long Dash Skipper</option>
-                     <option value="Crossline Skipper">Crossline Skipper</option>
-                     <option value="Peck's Skipper">Peck's Skipper</option>
-                     <option value="Tawny-edged Skipper">Tawny-edged Skipper</option>
-                     <option value="Little Glassywing">Little Glassywing</option>
-                     <option value="Common Checkered-Skipper">Common Checkered-Skipper</option>
-                     <option value="Southern Cloudywing">Southern Cloudywing</option>
-                     <option value="Northern Cloudywing">Northern Cloudywing</option>
-                     <option value="European Skipper">European Skipper</option>
-                     <option value="Northern Broken-Dash">Northern Broken-Dash</option>
-                     </optgroup>
-                   </select>
-                   <label>Species</label>
-                 </div>
-             </div>
+                                <optgroup label="Skippers">
+                                    <option value="Hoary Edge">Hoary Edge</option>
+                                    <option value="Pepper and Salt Skipper">Pepper and Salt Skipper</option>
+                                    <option value="Common Roadside-Skipper">Common Roadside-Skipper</option>
+                                    <option value="Delaware Skipper">Delaware Skipper</option>
+                                    <option value="Least Skipper">Least Skipper</option>
+                                    <option value="Sachem Skipper">Sachem Skipper</option>
+                                    <option value="Dusted Skipper">Dusted Skipper</option>
+                                    <option value="Brazilian Skipper">Brazilian Skipper</option>
+                                    <option value="Silver-spotted Skipper">Silver-spotted Skipper</option>
+                                    <option value="Wild Indigo Duskywing">Wild Indigo Duskywing</option>
+                                    <option value="Sleepy Duskywing">Sleepy Duskywing</option>
+                                    <option value="Horace's Duskywing">Horace's Duskywing</option>
+                                    <option value="Dreamy Duskywing">Dreamy Duskywing</option>
+                                    <option value="Juvenal's Duskywing">Juvenal's Duskywing</option>
+                                    <option value="Columbine Duskywing">Columbine Duskywing</option>
+                                    <option value="Mottled Duskywing">Mottled Duskywing</option>
+                                    <option value="Persius Duskywing">Persius Duskywing</option>
+                                    <option value="Two-spotted Skipper">Two-spotted Skipper</option>
+                                    <option value="Black Dash">Black Dash</option>
+                                    <option value="Dion Skipper">Dion Skipper</option>
+                                    <option value="Dun Skipper">Dun Skipper</option>
+                                    <option value="Leonard's Skipper">Leonard's Skipper</option>
+                                    <option value="Cobweb Skipper">Cobweb Skipper</option>
+                                    <option value="Indian Skipper">Indian Skipper</option>
+                                    <option value="Fiery Skipper">Fiery Skipper</option>
+                                    <option value="Swarthy Skipper">Swarthy Skipper</option>
+                                    <option value="Ocola Skipper">Ocola Skipper</option>
+                                    <option value="Common Sootywing">Common Sootywing</option>
+                                    <option value="Hobomok Skipper">Hobomok Skipper</option>
+                                    <option value="Mulberry Wing">Mulberry Wing</option>
+                                    <option value="Broad-winged Skipper">Broad-winged Skipper</option>
+                                    <option value="Zabulon Skipper">Zabulon Skipper</option>
+                                    <option value="Long Dash Skipper">Long Dash Skipper</option>
+                                    <option value="Crossline Skipper">Crossline Skipper</option>
+                                    <option value="Peck's Skipper">Peck's Skipper</option>
+                                    <option value="Tawny-edged Skipper">Tawny-edged Skipper</option>
+                                    <option value="Little Glassywing">Little Glassywing</option>
+                                    <option value="Common Checkered-Skipper">Common Checkered-Skipper</option>
+                                    <option value="Southern Cloudywing">Southern Cloudywing</option>
+                                    <option value="Northern Cloudywing">Northern Cloudywing</option>
+                                    <option value="European Skipper">European Skipper</option>
+                                    <option value="Northern Broken-Dash">Northern Broken-Dash</option>
+                                </optgroup>
+                            </select>
+                            <label>Species</label>
+                        </div>
+                    </div>
 
-             <div class="field">
-               <%= f.label :num %><br />
-               <%= f.number_field :num %>
-             </div>
-             <div class="field">
-               <%= f.label :img_url %><br />
-               <%= f.text_field :img_url %>
-             </div>
-             <div class="field">
-               <%= f.label :note %><br />
-               <%= f.text_area :note %>
-             </div>
-             <div class="actions">
-               <%= f.submit %>
-             </div>
-           <% end %>
+                    <div class="field">
+                        <%= f.label :num %><br/>
+                        <%= f.number_field :num %>
+                    </div>
+                    <div class="field">
+                        <%= f.label :img_url %><br/>
+                        <%= f.text_field :img_url %>
+                    </div>
+                    <div class="field">
+                        <%= f.label :note %><br/>
+                        <%= f.text_area :note %>
+                    </div>
+                    <div class="actions">
+                        <%= f.submit %>
+                    </div>
+                    <% end %>
 
-         </span>
-       </div>
-     </div>
-         </div>
-
+                </span>
+            </div>
+        </div>
+    </div>
 
 </div>
 <script>
-$(document).ready(function() {
-  $('select').material_select();
-  document.getElementsByClassName('select-dropdown')[0].value = "<%= @submit_init %>" ;
-});
+    $(document).ready(function () {
+        $('select').material_select();
+        document.getElementsByClassName('select-dropdown')[0].value = "<%= @submit_init %>";
+    });
 </script>

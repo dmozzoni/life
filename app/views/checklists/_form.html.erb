@@ -1,57 +1,54 @@
-       <div class="card-panel">
-         <span class="black-text">
+<div class="card-panel">
+    <span class="black-text">
 
-<%= form_for(checklist) do |f| %>
-  <% if checklist.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(checklist.errors.count, "error") %> prohibited this checklist from being saved:</h2>
+      <%= form_for(checklist) do |f| %>
+        <% if checklist.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(checklist.errors.count, "error") %>
+                prohibited this checklist from being saved:
+            </h2>
+            <ul>
+                <% checklist.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
 
-      <ul>
-      <% checklist.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <div class="field">
+            <%= f.label :date %>
+            <input type="date" class="" name="checklist[date]" id="checklist_date" value="<%= checklist.date %>">
+        </div>
+
+        <script>
+            $('.datepicker').pickadate({
+                max: true, selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15 // Creates a dropdown of 15 years to control year
+            });
+        </script>
+
+        <div class="field">
+            <%= f.label :location %>
+            <%= f.text_field :location %>
+        </div>
+
+        <div class="field">
+            <%= f.label :note %>
+            <%= f.text_area :note %>
+        </div>
+
+        <input type="hidden" name="checklist[coord]" id="checklist_coord" value="">
+        <input type="hidden" name="checklist[country]" id="checklist_country" value="">
+        <input type="hidden" name="checklist[state]" id="checklist_state" value="">
+        <input type="hidden" name="checklist[county]" id="checklist_county" value="">
+
+        <div class="actions">
+            <input type="submit" id='ncfsub' name="commit" value="Create Checklist" data-disable-with="Create Checklist">
+        </div>
+
+        <a class="waves-effect waves-light btn" id="dumbbutton">Submit</a>
+
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :date %>
-    <input type="date" class="" name="checklist[date]" id="checklist_date" value="<%= checklist.date %>">
-  </div>
-
-
-
-<script>
-$('.datepicker').pickadate({
-  max: true,
-  selectMonths: true, // Creates a dropdown to control month
-  selectYears: 15 // Creates a dropdown of 15 years to control year
-});
-</script>
-
-
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  </div>
-
-  <div class="field">
-    <%= f.label :note %>
-    <%= f.text_area :note %>
-  </div>
-
-  <input type="hidden" name="checklist[coord]" id="checklist_coord" value="">
-  <input type="hidden" name="checklist[country]" id="checklist_country" value="">
-  <input type="hidden" name="checklist[state]" id="checklist_state" value="">
-  <input type="hidden" name="checklist[county]" id="checklist_county" value="">
-
-  <div class="actions">
-    <input type="submit" id='ncfsub' name="commit" value="Create Checklist" data-disable-with="Create Checklist">
-  </div>
-
-<a class="waves-effect waves-light btn" id="dumbbutton">Submit</a>
-
-
-<% end %>
-</span>
+      
+    </span>
 </div>

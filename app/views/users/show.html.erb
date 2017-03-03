@@ -1,121 +1,129 @@
 <script>
-$(document).ready(function() {
-    // call the tablesorter plugin
-    $(".tablesorter").tablesorter({
-        // sort on the first column and third column, order asc
-        sortList: [[2,1]]
+    $(document).ready(function () {
+        // call the tablesorter plugin
+        $(".tablesorter").tablesorter({
+            // sort on the first column and third column, order asc
+            sortList: [
+                [2, 1]
+            ]
+        });
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+
     });
-
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-
-});
 </script>
 
-
 <ul class="tab">
-  <li><a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'Life')" id="defaultOpen">Life</a></li>
-  <li><a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'Country')">Country</a></li>
-  <li><a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'State')">State</a></li>
-  <li><a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'County')">County</a></li>
+    <li>
+        <a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'Life')" id="defaultOpen">Life</a>
+    </li>
+    <li>
+        <a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'Country')">Country</a>
+    </li>
+    <li>
+        <a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'State')">State</a>
+    </li>
+    <li>
+        <a href="javascript:void(0)" class="tablinks" onclick="openTabs(event, 'County')">County</a>
+    </li>
 </ul>
-
 
 <div id="Life" class="tabcontent">
 
-  <table id="lifeTable" class="tablesorter">
-    <thead>
-      <tr>
-        <th>Location</th>
-        <th>Number of Checklists</th>
-        <th>Number of Unique Species</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><%= Life %></td>
-          <td><%= (@checklists-['',nil]).count %></td>
-          <td><%= (@checklists-['',nil]).map{|i| i.butterflies.map{|j| j.species}}.flatten.uniq.count %></td>
-        </tr>
-    </tbody>
-  </table>
+    <table id="lifeTable" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Number of Checklists</th>
+                <th>Number of Unique Species</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= Life %></td>
+                <td><%= (@checklists-['',nil]).count %></td>
+                <td><%= (@checklists-['',nil]).map{|i| i.butterflies.map{|j| j.species}}.flatten.uniq.count %></td>
+            </tr>
+        </tbody>
+    </table>
 
 </div>
 
 <div id="Country" class="tabcontent">
 
-  <table id="countryTable" class="tablesorter">
-    <thead>
-      <tr>
-        <th>Location</th>
-        <th>Number of Checklists</th>
-        <th>Number of Unique Species</th>
-      </tr>
-    </thead>
-    <%
+    <table id="countryTable" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Number of Checklists</th>
+                <th>Number of Unique Species</th>
+            </tr>
+        </thead>
+        <%
     num_country = (@checklists.map{|i| i.country} - ['',nil]).flatten.uniq.count
     arr_country = (@checklists.map{|i| i.country} - ['',nil]).flatten.uniq
     %>
-    <tbody>
-      <% arr_country.each do |i| %>
-        <tr>
-          <td><%= i %></td>
-          <td><%= @checklists.where(country: i).count %></td>
-          <td><%= @checklists.where(country: i).map{|ii| ii.butterflies.map{|j| j.species}}.flatten.uniq.count %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <tbody>
+            <% arr_country.each do |i| %>
+            <tr>
+                <td><%= i %></td>
+                <td><%= @checklists.where(country: i).count %></td>
+                <td><%= @checklists.where(country: i).map{|ii| ii.butterflies.map{|j| j.species}}.flatten.uniq.count %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
 
 <div id="State" class="tabcontent">
 
-  <table id="stateTable" class="tablesorter">
-    <thead>
-      <tr>
-        <th>Location</th>
-        <th>Number of Checklists</th>
-        <th>Number of Unique Species</th>
-      </tr>
-    </thead>
-    <%
+    <table id="stateTable" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Number of Checklists</th>
+                <th>Number of Unique Species</th>
+            </tr>
+        </thead>
+        <%
     num_state = (@checklists.map{|i| i.state} - ['',nil]).flatten.uniq.count
     arr_state = (@checklists.map{|i| i.state} - ['',nil]).flatten.uniq
     %>
-    <tbody>
-      <% arr_state.each do |i| %>
-        <tr>
-          <td><%= i %></td>
-          <td><%= @checklists.where(state: i).count %></td>
-          <td><%= @checklists.where(state: i).map{|ii| ii.butterflies.map{|j| j.species}}.flatten.uniq.count %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <tbody>
+            <% arr_state.each do |i| %>
+            <tr>
+                <td><%= i %></td>
+                <td><%= @checklists.where(state: i).count %></td>
+                <td><%= @checklists.where(state: i).map{|ii| ii.butterflies.map{|j| j.species}}.flatten.uniq.count %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
 
 <div id="County" class="tabcontent">
 
-  <table id="countyTable" class="tablesorter">
-    <thead>
-      <tr>
-        <th>Location</th>
-        <th>Number of Checklists</th>
-        <th>Number of Unique Species</th>
-      </tr>
-    </thead>
-    <%
+    <table id="countyTable" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Number of Checklists</th>
+                <th>Number of Unique Species</th>
+            </tr>
+        </thead>
+        <%
     num_county = (@checklists.map{|i| i.county} - ['',nil]).flatten.uniq.count
     arr_county = (@checklists.map{|i| i.county} - ['',nil]).flatten.uniq
     %>
-    <tbody>
-      <% arr_county.each do |i| %>
-        <tr>
-          <td><%= i %></td>
-          <td><%= @checklists.where(county: i).count %></td>
-          <td><%= @checklists.where(county: i).map{|ii| ii.butterflies.map{|j| j.species}}.flatten.uniq.count %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <tbody>
+            <% arr_county.each do |i| %>
+            <tr>
+                <td><%= i %></td>
+                <td><%= @checklists.where(county: i).count %></td>
+                <td><%= @checklists.where(county: i).map{|ii| ii.butterflies.map{|j| j.species}}.flatten.uniq.count %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
