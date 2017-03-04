@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "checklists#index"
+  root 'checklists#index'
   resources :checklists do
     resources :butterflies
   end

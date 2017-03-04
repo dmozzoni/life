@@ -1,4 +1,4 @@
-#
+# ChecklistsController
 class ChecklistsController < ApplicationController
   before_action :set_checklist, only: [:show, :edit, :update, :destroy]
 
@@ -52,7 +52,6 @@ class ChecklistsController < ApplicationController
   # PATCH/PUT /checklists/1
   # PATCH/PUT /checklists/1.json
   def update
-
     @checklist = Checklist.find(params[:id])
     if @checklist.user == current_user
       respond_to do |format|
@@ -66,10 +65,9 @@ class ChecklistsController < ApplicationController
         end
       end
     else
-      flash[:alert] = "Only the author of the Checklist may Update."
+      flash[:alert] = 'Only the author of the Checklist may Update.'
       redirect_to checklists_path
     end
-
   end
 
   # DELETE /checklists/1
@@ -79,19 +77,20 @@ class ChecklistsController < ApplicationController
     if @checklist.user == current_user
       @checklist.destroy
     else
-      flash[:alert] = "Only the author of the Checklist may Delete it."
+      flash[:alert] = 'Only the author of the Checklist may Delete it.'
     end
     redirect_to checklists_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_checklist
-      @checklist = Checklist.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def checklist_params
-      params.require(:checklist).permit(:date, :location, :coord, :note, :country, :state, :county)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_checklist
+    @checklist = Checklist.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def checklist_params
+    params.require(:checklist).permit(:date, :location, :coord, :note, :country, :state, :county)
+  end
 end

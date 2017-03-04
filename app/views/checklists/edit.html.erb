@@ -13,7 +13,19 @@
         </div>
     </div>
 </div>
-<script>
+
+<script type="text/javascript">
     setLatLng(<%= @lat %>, <%= @lng %>);
+    if (window.google) {
+        initMap2();
+    } else {
+        $.ajax('<%= @srctext %>', {
+            crossDomain: true,
+            dataType: 'script'
+        }).done(function (response) {
+            initMap2();
+        }).fail(function () {
+            console.log('Ajax fail for initMap2');
+        });
+    }
 </script>
-<script async defer src=<%= @srctext %>></script>

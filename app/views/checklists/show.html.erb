@@ -5,10 +5,23 @@
     <div class="card horizontal">
         <div class="card-image">
             <div id="map2"></div>
-            <script>
+
+            <script type="text/javascript">
                 setLatLng(<%= @lat %>, <%= @lng %>);
+                if (window.google) {
+                    showMap();
+                } else {
+                    $.ajax('<%= @srctext %>', {
+                        crossDomain: true,
+                        dataType: 'script'
+                    }).done(function (response) {
+                        showMap();
+                    }).fail(function () {
+                        console.log('Ajax fail for showMap');
+                    });
+                }
             </script>
-            <script async defer src=<%= @srctext %>></script>
+
         </div>
         <div class="card-stacked">
             <div class="card-content">
