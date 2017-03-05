@@ -2,6 +2,53 @@ let lat = 0.0;
 let lng = 0.0;
 
 
+// Set the lat, lng global values
+function setLatLng(tmpLat, tmpLng) {
+    lat = tmpLat;
+    lng = tmpLng;
+}
+
+// Find the a value from Google Maps API response object
+function findName(results, level, type) {
+    for (var key in results) {
+        var add = results[key];
+        for (var key2 in add.address_components) {
+            var add2 = add.address_components[key2];
+            for (var key3 in add2.types) {
+                if ((add2.types[key3].localeCompare(level)) === 0)
+                    return (add2[type]);
+            }
+        }
+    }
+}
+
+// Geocoder to get names from marker position
+function geocodeLatLng(geocoder, map, latlng, elementStr) {
+    geocoder.geocode({
+        'location': latlng
+    }, function(results, status) {
+        if (status === 'OK') {
+            if (results[1]) {
+                document.getElementById("checklist_country").value = findName(results, 'country', 'long_name');
+                document.getElementById("checklist_state").value = findName(results, 'administrative_area_level_1', 'long_name');
+                document.getElementById("checklist_county").value = findName(results, 'administrative_area_level_2', 'short_name');
+                document.getElementById("checklist_coord").value = String(latlng.lat) + ',' + String(latlng.lng);
+                if (document.getElementById("checklist_location").value !== '' && document.getElementById("checklist_date").value !== '') {
+                    $(elementStr).submit();
+                } else {
+                    alert('Form incomplete');
+                }
+            } else {
+                window.alert('No results found');
+            }
+        } else {
+            window.alert('Geocoder failed due to: ' + status);
+        }
+    });
+}
+
+
+// For the Checklist New Page
 function initMap() {
     var myLatLng = {
         lat: lat,
@@ -21,67 +68,19 @@ function initMap() {
     });
 
     $('#dumbbutton').on('click', function(e) {
-        geocodeLatLng(geocoder, map, infowindow);
+        var latlng = {
+          lat: marker.position.lat(),
+          lng: marker.position.lng()
+        };
+        geocodeLatLng(geocoder, map, latlng, '#new_checklist');
     });
 
     // This event listener will call addMarker() when the map is clicked.
     map.addListener('click', function(event) {
         marker.setPosition(event.latLng); // addMarker(event.latLng);
     });
-
-
-    function findName(results, level, type) {
-        for (var key in results) {
-            var add = results[key];
-            for (var key2 in add.address_components) {
-                var add2 = add.address_components[key2];
-                for (var key3 in add2.types) {
-                    if ((add2.types[key3].localeCompare(level)) === 0)
-                        return (add2[type]);
-                }
-            }
-        }
-    }
-
-
-    function geocodeLatLng(geocoder, map, infowindow) {
-        var latlng = {
-            lat: marker.position.lat(),
-            lng: marker.position.lng()
-        };
-
-        geocoder.geocode({
-            'location': latlng
-        }, function(results, status) {
-            if (status === 'OK') {
-                if (results[1]) {
-
-                    document.getElementById("checklist_country").value = findName(results, 'country', 'long_name');
-                    document.getElementById("checklist_state").value = findName(results, 'administrative_area_level_1', 'long_name');
-                    document.getElementById("checklist_county").value = findName(results, 'administrative_area_level_2', 'short_name');
-                    document.getElementById("checklist_coord").value = String(latlng.lat) + ',' + String(latlng.lng);
-
-                    if (document.getElementById("checklist_location").value !== '' && document.getElementById("checklist_date").value !== '') {
-                        $('#new_checklist').submit();
-                    } else {
-                        alert('Form incomplete');
-                    }
-
-                } else {
-                    window.alert('No results found');
-                }
-            } else {
-                window.alert('Geocoder failed due to: ' + status);
-            }
-        });
-    }
 }
 
-
-function setLatLng(tmpLat, tmpLng) {
-    lat = tmpLat;
-    lng = tmpLng;
-}
 
 // For the Checklist Show Page
 function showMap() {
@@ -100,6 +99,7 @@ function showMap() {
 }
 
 
+// For the Checklist Edit Page
 function initMap2() {
     var myLatLng = {
         lat: lat,
@@ -119,56 +119,15 @@ function initMap2() {
     });
 
     $('#dumbbutton').on('click', function(e) {
-        geocodeLatLng(geocoder, map, infowindow);
+        var latlng = {
+          lat: marker.position.lat(),
+          lng: marker.position.lng()
+        };
+        geocodeLatLng(geocoder, map, latlng, 'form');
     });
 
     // This event listener will call addMarker() when the map is clicked.
     map.addListener('click', function(event) {
         marker.setPosition(event.latLng);
     });
-
-    function findName(results, level, type) {
-        for (var key in results) {
-            var add = results[key];
-            for (var key2 in add.address_components) {
-                var add2 = add.address_components[key2];
-                for (var key3 in add2.types) {
-                    if ((add2.types[key3].localeCompare(level)) === 0)
-                        return (add2[type]);
-                }
-            }
-        }
-    }
-
-
-    function geocodeLatLng(geocoder, map, infowindow) {
-        var latlng = {
-            lat: marker.position.lat(),
-            lng: marker.position.lng()
-        };
-
-        geocoder.geocode({
-            'location': latlng
-        }, function(results, status) {
-            if (status === 'OK') {
-                if (results[1]) {
-                    document.getElementById("checklist_country").value = findName(results, 'country', 'long_name');
-                    document.getElementById("checklist_state").value = findName(results, 'administrative_area_level_1', 'long_name');
-                    document.getElementById("checklist_county").value = findName(results, 'administrative_area_level_2', 'short_name');
-                    document.getElementById("checklist_coord").value = String(latlng.lat) + ',' + String(latlng.lng);
-
-                    if (document.getElementById("checklist_location").value !== '' && document.getElementById("checklist_date").value !== '') {
-                        $('form').submit();
-                    } else {
-                        alert('Form incomplete');
-                    }
-
-                } else {
-                    window.alert('No results found');
-                }
-            } else {
-                window.alert('Geocoder failed due to: ' + status);
-            }
-        });
-    }
 }
