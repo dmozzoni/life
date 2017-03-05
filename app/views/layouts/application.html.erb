@@ -20,17 +20,17 @@
         <nav>
             <div class="nav-wrapper">
                 <ul id="nav" class="right">
-                  <% if user_signed_in? %>
+                    <% if user_signed_in? %>
                     <li> <%= link_to "Checklists", checklists_path %> </li>
                     <li> <%= link_to "Stats", user_path(current_user) %> </li>
                     <li> <%= link_to "Quiz", 'http://dmozzoni.github.io/ProjectOne' %> </li>
                     <li> <%= link_to 'Edit profile', edit_user_registration_path %> </li>
                     <li> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
-                  <% else %>
+                <% else %>
                     <li> <%= link_to "Quiz", 'http://dmozzoni.github.io/ProjectOne' %> </li>
                     <li> <%= link_to "Sign up", new_user_registration_path %> </li>
                     <li> <%= link_to "Login", new_user_session_path %> </li>
-                  <% end %>
+                    <% end %>
                 </ul>
             </div>
         </nav>
@@ -49,8 +49,8 @@
                 <div class="row">
                     <div class="col s6">
                         <h5 class="white-text">Contact</h5>
-                        <p class="grey-text text-lighten-4">
-                            <div class="social">
+                        <div class="social">
+                            <p class="grey-text text-lighten-4">
                                 <a href="https://github.com/dmozzoni">
                                     <img src="/assets/GitHub_Logo.png" alt="Github" width="110">
                                 </a>
@@ -62,10 +62,10 @@
                                     <img src="https://www.codewars.com/users/dmozzoni/badges/micro" alt="Codewars">
                                 </a>
                                 <a href="http://www.inaturalist.org/people/1620">
-                                    <img alt="iNaturalist.org" src="https://static.inaturalist.org/sites/1-logo.png?1433365372"/>
+                                    <img alt="iNaturalist.org" src="https://static.inaturalist.org/sites/1-logo.png?1433365372">
                                 </a>
-                            </div>
-                        </p>
+                            </p>
+                        </div>
                     </div>
                     <div class="col s6">
                         <h5 class="white-text">Useful Butterflying Resources</h5>

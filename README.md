@@ -59,3 +59,4 @@
   3. Better more consistent styling.
   4. Add multiple butterflies via one large form instead of a dropdown.
   5. Area specific selection of butterflies.
+  6. Upload photos.
